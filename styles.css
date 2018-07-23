@@ -1,0 +1,304 @@
+<style>
+
+#LoginScreen {
+    display:none;
+}
+#BlackJackGUI {
+    display:none;
+}
+#HoldEmGUI {
+    display:none;
+}
+
+#HoldEm {
+    background-color: purple; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-family:verdana;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    position:absolute;
+    margin-left:950px;
+    margin-top:30px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#HoldEm:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid purple;
+}
+#BlackJack {
+    background-color: green; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-family:verdana;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    position:absolute;
+    margin-left:90px;
+    margin-top:30px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#BlackJack:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid green;
+}
+.main {
+  width: 1000px;
+  background-color: gray;
+}
+
+.table {
+  background-color: #076324;
+  height: 500px;
+  width: 80%;
+  position:fixed;
+  margin-left:110px;
+  margin-top:50px;
+  border-radius: 50%;
+  border: 1em solid black;
+}
+
+.board {
+  position: relative;
+  top: 40%;
+  left: 20%;
+}
+.card-small {
+  border: .2em solid black;
+  border-radius: 10%;
+  height: 80px;
+  width: 56px; /*70% of height*/
+  margin-right: 5px;
+  float: left;
+  background-color: white;
+  transition: all 0.7s ease-in-out;
+ }
+
+ .card-board {
+   border: .2em solid black;
+   border-radius: 10%;
+   height: 80px;
+   width: 56px; /*70% of height*/
+   margin-right: 75px;
+   float: left;
+   background-color: white;
+  }
+
+.card-text {
+  margin: 0;
+  margin-top: 15%;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0;
+}
+
+.card-img {
+  text-align: center;
+  margin: 0;
+  font-size: 2em;
+}
+
+.red {
+  color: red;
+}
+
+.black {
+  color: black;
+}
+
+.dot {
+  height: 150px;
+  width: 150px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline;
+  text-align: center;
+  vertical-align: middle;
+  border: 0.5em solid black;
+  font-size:11px;
+  font-family: verdana;
+  color:white;
+  white-space: nowrap;
+  hyphens:none;
+  word-wrap: break-word;
+  text-overflow:ellipsis;
+  transition: all 0.7s ease-in-out;
+}
+
+#p0 {
+    position: absolute;
+    margin-left:570px;
+    line-height:30px;
+}
+
+#p0_cards {
+    position: absolute;
+    margin-left:730px;
+    margin-top:120px
+}
+
+#p1_cards {
+    position: absolute;
+    margin-left:740px;
+    margin-top:440px;
+}
+
+#p1 {
+    position: absolute;
+    margin-left:570px;
+    margin-top:465px;
+    line-height:30px;
+}
+
+#p0_balance {
+    position: absolute;
+    margin-left:730px;
+    text-align:center;
+}
+
+#p1_balance {
+    position: absolute;
+    margin-left:730px;
+    margin-top:580px;
+    text-align:center;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 50px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#bet_0 {
+    position: absolute;
+    margin-left:590px;
+    margin-top:100px;
+}
+
+#check_0 {
+    position: absolute;
+    margin-left:673px;
+    margin-top:100px;
+}
+
+#fold_0 {
+    position: absolute;
+    margin-left:627px;
+    margin-top:120px;
+}
+
+#bet_1 {
+    position: absolute;
+    margin-left:590px;
+    margin-top:570px;
+}
+
+#check_1 {
+    position: absolute;
+    margin-left:673px;
+    margin-top:570px;
+}
+
+#fold_1 {
+    position: absolute;
+    margin-left:627px;
+    margin-top:590px;
+}
+
+#fold_1 {
+    position: absolute;
+    margin-left:627px;
+    margin-top:590px;
+}
+
+#bet_slider_0 {
+    position:absolute;
+    margin-left:627px;
+    margin-top:100px;
+}
+
+#bet_slider_1 {
+    position: absolute;
+    margin-left:627px;
+    margin-top:590px;
+}
+
+#betting_slider_0 {
+    position: absolute;
+    margin-left:585px;
+    margin-top:50px;
+}
+
+#betting_slider_1 {
+    position: absolute;
+    margin-left:585px;
+    margin-top:520px;
+}
+
+#slider_val_0 {
+    position: absolute;
+    margin-left:627px;
+    margin-top:10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#slider_val_1 {
+    position: absolute;
+    margin-left:627px;
+    margin-top:480px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#card_0 {
+    display:none;
+}
+
+#card_1 {
+    display:none;
+}
+
+#card_2 {
+    display:none;
+}
+
+#card_3 {
+    display:none;
+}
+
+#card_4 {
+    display:none;
+}
+
+.player_balance {
+    font-size:16px;
+    font-family: verdana;
+    color:black;
+    font-weight:bold;
+}
+
+#pot {
+    position:absolute;
+    margin-left:630px;
+    margin-top:200px;
+}
+</style>

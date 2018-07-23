@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src ="https://d3js.org/d3.v5.js" charset="utf-8"></script>
+<script src = "https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<link rel="stylesheet" href="styles.css">
+<style>
+
+body {
+    background-color:lightblue;
+}
+
+</style>
+
+<div id = "LoginScreen">
+
+</div>
+
+<div id = "GameSelectionScreen">
+    <button id = "HoldEm" class = "option-button">Texas Hold'Em</button>
+    <button id = "BlackJack" class = "option-button">BlackJack</button>
+</div>
+
+<div id = "BlackJackGUI">
+    BLACKJACK
+</div>
+
+<div id = "HoldEmGUI">
+    <div class="main">
+
+        <div class="table">
+
+            <div class="board">
+                <div id = "card_0" class = "card-board">
+                </div>
+
+                <div id = "card_1" class = "card-board">
+                </div>
+
+                <div id = "card_2" class = "card-board">
+                </div>
+
+                <div id = "card_3" class = "card-board">
+                </div>
+
+                <div id = "card_4" class = "card-board">
+                </div>
+            </div>
+
+        </div>
+
+        <span class="dot" id = "p0"></span>
+        <span class="dot" id = "p1"></span>
+
+    </div>
+    <div id = "p0_cards" style = "display:none">
+        <div id = "p0_cards_0" class="card-small">
+        </div>
+        <div id = "p0_cards_1" class="card-small">
+        </div>
+    </div>
+    <div id = "p1_cards" style = "display:none">
+        <div id = "p1_cards_0" class="card-small">
+        </div>
+        <div id = "p1_cards_1" class="card-small">
+        </div>
+    </div>
+
+    <div id = "p0_balance" class = "flex-container">
+        <img src="poker_chip.png" style="width:35px;height:35px;">
+        <p id = "balance_0" class = "balance_label" style="font-size:22px;font-family:verdana"><font color="black"></font></p>
+    </div>
+
+    <div id = "p1_balance" class = "flex-container">
+        <img src="poker_chip.png" style="width:35px;height:35px;">
+        <p id = "balance_1" class = "balance_label" style="font-size:22px;font-family:verdana"><font color="black"></font></p>
+    </div>
+
+    <div id = "pot" class = "flex-container">
+        <img src="poker_chip.png" style="width:35px;height:35px;">
+        <p id = "total_pot" style="font-size:22px;font-family:verdana;color:white"><font color="white"></font></p>
+    </div>
+
+    <div id = "player_moves">
+
+    </div>
+
+    <div id = "betting_slider_0">
+
+    </div>
+
+    <div id = "betting_slider_1">
+
+    </div>
+
+</div>
+
+<script src ="game.js">
+</script>
+
+</html>
