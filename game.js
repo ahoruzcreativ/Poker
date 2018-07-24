@@ -246,7 +246,12 @@ var resetGame = function() { //clears all cards on the board for next game
 socket.on("payout", function(data) { // pay out pot to the winners
     setTimeout(function() {
         $("#total_pot").text("");
-        if (data.info.tie) {
+        if (data.winner != undefined) {
+            var turn = id_to_turn[data.winner];
+            var new_balance = Number($("#" + turn + "_balance").text().trim().substring(1)) + data.pot;
+            $("#" + turn + "_balance").text("$" + new_balance);
+        }
+        else if (data.info.tie) {
             var winnings = data.pot/data.info.winner.length; // split if more than one winner
             var winners = [];
             for (var i = 0; i < data.info.winner.length; i++) {
