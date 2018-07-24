@@ -661,37 +661,41 @@ onmessage = function(e) {
         }
 
         if (e.data.op == "GetWinner") {
-            board = flop.slice();
-            board.push(turn);
-            board.push(river);
-            board = board.map(function(e) {
-                return e.split("_");
-            });
-            this.postMessage({"info" : getWinner(), "pot" : e.data.pot});
+            if (e.data.winner == undefined) {
+                board = flop.slice();
+                board.push(turn);
+                board.push(river);
+                board = board.map(function(e) {
+                    return e.split("_");
+                });
+                this.postMessage({"info" : getWinner(), "pot" : e.data.pot});
+                return;
+            }
+            this.postMessage({"winner" : e.data.winner, "pot" : e.data.pot});
             return;
         }
 
         if (e.data.op == "setFlop") {
             flop = e.data.flop;
-            console.log("Flop");
-            console.log(flop);
-            console.log("\n")
+            //console.log("Flop");
+            //console.log(flop);
+            //console.log("\n")
             return;
         }
 
         if (e.data.op == "setTurn") {
             turn = e.data.turn;
-            console.log("Turn");
-            console.log(turn);
-            console.log("\n")
+            //console.log("Turn");
+            //console.log(turn);
+            //console.log("\n")
             return;
         }
 
         if (e.data.op == "setRiver") {
             river = e.data.river;
-            console.log("River");
-            console.log(river);
-            console.log("\n")
+            //console.log("River");
+            //console.log(river);
+            //console.log("\n")
             return;
         }
     } catch (err) {
