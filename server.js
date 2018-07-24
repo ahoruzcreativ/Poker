@@ -84,7 +84,7 @@ io.on('connection', function(socket) { // socket logic
 	});
 	socket.on('start_round', function(data) {  // starts a new iteration of the current texas hold em round
 		console.log(data + " Connected!");
-		console.log("Starting Round");
+		//console.log("Starting Round");
 		check_holdem_1.push(data);
 		if (List.isEqual(check_holdem_1.sort(), players_copy.sort())) {
 			check_holdem_1 = [];
@@ -123,6 +123,7 @@ io.on('connection', function(socket) { // socket logic
 							if (e.data.winner != undefined) {
 								console.log("No Need For Matching")
 								console.log("Winner: " + e.data.winner);
+								matching_thread.postMessage({"op" : "GetWinner", "pot" : e.data.pot, "winner" : e.data.winner});
 								return;
 							}
 							matching_thread.postMessage({"op" : "GetWinner", "pot" : e.data.pot});
@@ -173,11 +174,13 @@ io.on('connection', function(socket) { // socket logic
 			console.log("Starting Next Round");
 
 			hold_em_1_deck = Poker.shuffle(); //generate a shuffled deck
-			for (var i = 0; i < player_order.length; i++) {
-				var cards = HoldEm.deal(hold_em_1_deck);
-				io.to(player_order[i]).emit("Hand", {cards: cards, player:i});
-				matching_thread.postMessage({"op" :"SetHand", "hand" : cards, "player" : player_order[i]});
-			}
+			setTimeout(function() {
+				for (var i = 0; i < player_order.length; i++) {
+					var cards = HoldEm.deal(hold_em_1_deck);
+					io.to(player_order[i]).emit("Hand", {cards: cards, player:i});
+					matching_thread.postMessage({"op" :"SetHand", "hand" : cards, "player" : player_order[i]});
+				}
+			}, 3000);
 		}
 	});
 });
