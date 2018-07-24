@@ -75,6 +75,10 @@ onmessage = function(e) {
         console.log("Setting Players");
         players = e.data.player_list;
         if (player_status.length == 0) {
+            console.log("Setting True");
+            state = "PREFLOP";
+            current_bet = 1;
+            current_player = 0;
             for (var i = 0; i < players.length; i++) {
                 player_status[i] = true;
             }
@@ -131,8 +135,11 @@ onmessage = function(e) {
         current_player += 1;
         if (isOver()) {
             var old_pot_val = pot;
+            current_player = 0; // reset player
             pot = 0; // reset the pot
             postMessage({"op": "RES", "state": "DONE", "transition": true, "pot" : old_pot_val, "winner" : getWinner()});
+            player_status = [];
+            state = "PREFLOP";
             return;
         }
         while (!player_status[current_player] && current_player != players.length) {
